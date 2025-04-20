@@ -1,6 +1,8 @@
 import { Box, Flex, Spacer, Button, HStack } from '@chakra-ui/react';
 import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
+import { FaUser } from 'react-icons/fa';
+import { MdDashboard } from "react-icons/md";
 
 export default async function Header() {
 
@@ -14,7 +16,19 @@ export default async function Header() {
         </Link>
         <Spacer />
         <SignedIn>
-          <UserButton />
+          <HStack gap={4}>
+            <Link href="/dashboard">
+              <Button colorScheme="teal" variant="ghost" p={2} aria-label="Dashboard">
+                <MdDashboard />
+              </Button>
+            </Link>
+            <Link href="/profile">
+              <Button colorScheme="teal" variant="ghost" p={2} aria-label="Profile">
+                <FaUser />
+              </Button>
+            </Link>
+            <UserButton />
+          </HStack>
         </SignedIn>
         <SignedOut>
           <HStack gap={4}>
